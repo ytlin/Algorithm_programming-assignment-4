@@ -60,9 +60,9 @@ int main()
     }
     build_tree(x);
     generate_code(x.top());
-    for(int i=97;i<123;i++)
+    for(int i=0;i<256;i++)
     {
-        cout<<(char)i<<":"<<code[i]<<endl;
+        cout<<code[i]<<endl;
     }
     encode(input,index);
 }
