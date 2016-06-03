@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     //string code[256];
-    char input[2048];
+    char input[999999];
     int index=0;
     char tmp;
     map<string,int> m;
@@ -19,10 +19,9 @@ int main()
     getchar();
     while((tmp = getchar()) != EOF)
     {
+    //    cout<<(char)tmp<<":"<<index<<endl;
         input[index++]=tmp;
     }
-
-    //cout<< (m.find("10") == m.end());
     str="";
     for(int i=0;i<index;i++)
     {

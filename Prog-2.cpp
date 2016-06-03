@@ -35,19 +35,12 @@ typedef priority_queue<node, vector<node>, cmp> pq;
 
 /**functions*/
 void Dijkstra(node** v);
-//bool check(int* trace,int trace_index,int* d);
 int printSolution(int* dist, int n, int* parent);
 void printPath(int* parent, int j);
 
 int main()
-{/*
-    int num_verts;
-    int num_edges;
-    int VR;
-    int VS;
-    int des;
-    int src;
-    node** verts;*/
+{
+  
     int tmp1,tmp2,tmpR;
     node* tmp;
 
@@ -78,18 +71,7 @@ int main()
             pre = cur; cur = cur->next;
         }
     }
-    cin>>src>>des;/*
-    for(int i=0;i<num_verts;i++)
-    {
-        tmp = verts[i];
-        cout<<i<<"==>"<<endl;
-        while(tmp != NULL){
-            cout<<tmp->v<<":"<<tmp->w<<endl;
-            tmp = tmp->next;
-        }
-        cout<<"\n";
-    }
-    cout<<"------init finished-------"<<endl;*/
+    cin>>src>>des;
     Dijkstra(verts);
 }
 
@@ -136,56 +118,26 @@ void Dijkstra(node** v)
                     n.v = tmp->v; n.w=d[tmp->v]; n.next=NULL;
                     x.push(n);
                     parent[tmp->v] = u;
-             //       cout<<"push:"<<n.v<<" "<<n.w<<endl;
                  }
                  tmp = tmp->next;
              }
         if(!visited[des])trace[trace_index++]=u;
-        /*if(trace_index>2 && check(trace,trace_index,d))
-            {
-                trace[trace_index-2] = trace[trace_index-1];
-                trace_index--;
-            }*/
         }
         x.pop();
     }
-    //printSolution(d, num_verts, parent);
     cout<<"Route: ";
     cout<<src<<" ";
     printPath(parent,des);
-    //for(int i=0;i<trace_index;i++)cout<<trace[i]<<" ";
-    //cout<<des<<endl;
     cout<<"\nTotal distance: "<<d[des]<<endl;
     cout<<"Estimation time: "<<((double)d[des])/VS<<endl;
 }
-/*
-bool check(int* trace,int trace_index,int* d)
-{
-    cout<<trace_index<<"begin"<<endl;
-    node* tmp = verts[trace[trace_index-2]];
-    int tmp_d=-1;
-    while(tmp != NULL)
-    {
-        if(tmp->v == trace[trace_index-1])
-        {
-            tmp_d = tmp->w;
-            break;
-        }
-        tmp = tmp->next;
-    }
-    return (d[trace[trace_index-1]] < d[trace[trace_index-2]]+tmp_d);
-}
-*/
 void printPath(int* parent, int j)
 {
-    // Base Case : If j is source
     if (parent[j]==-1)
         return;
     printPath(parent, parent[j]);
     printf("%d ", j);
 }
-// A utility function to print the constructed distance
-// array
 
 int printSolution(int* dist, int n, int* parent)
 {

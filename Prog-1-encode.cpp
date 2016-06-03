@@ -37,8 +37,8 @@ void encode(char* c , int i);
 
 int main()
 {
-    char buff[2048];
-    char input[2048];
+    char buff[3000];
+    char input[3000];
     int index = 0;
     char tmp;
     pq x;
